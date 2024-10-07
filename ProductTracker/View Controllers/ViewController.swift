@@ -24,7 +24,6 @@ class ViewController: UIViewController {
         
         let url = createUrl(code: code)!
         searchItem(url: url)
-        
     }
     
     //creates url with search and api key
@@ -66,6 +65,9 @@ class ViewController: UIViewController {
                             DispatchQueue.main.async {
                                 print(product)
                                 self.product = product
+                                
+                                //navigate once product is found
+                                self.navigateToDetails()
                             }
                         }
                     }
@@ -78,6 +80,12 @@ class ViewController: UIViewController {
     }
     
     
-    
+    func navigateToDetails(){
+        if let destinationVC = storyboard?.instantiateViewController(withIdentifier: "Details") as? DetailViewController {
+            
+            destinationVC.product = product
+            self.navigationController?.pushViewController(destinationVC, animated: true)
+        }
+    }
     
 }

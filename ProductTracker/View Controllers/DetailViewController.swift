@@ -31,11 +31,14 @@ class DetailViewController: UIViewController {
     }
 
     func fetchImage(forPath path:String){
-        
-        guard let imageURL = URL(string: path) else {
-            print("Can't make this url: \(path)")
+        //fixes url (http is not secure)
+        let securePath = path.replacingOccurrences(of: "http", with: "https")
+
+        guard let imageURL = URL(string: securePath) else {
+            print("Can't make this url: \(securePath)")
             return
         }
+        print(imageURL)
         let imageFetch = URLSession.shared.downloadTask(with: imageURL){
             url, response, error in
             
