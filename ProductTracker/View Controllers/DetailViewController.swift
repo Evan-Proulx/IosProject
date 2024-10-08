@@ -19,15 +19,13 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Product details
         productTitle.text = product.title
         brand.text = product.brand
         details.text = product.description
-        price.text = String(product.price)
+        price.text = String("$\(product.price)")
         
         fetchImage(forPath: product.image)
-        
-        
-
     }
 
     func fetchImage(forPath path:String){
@@ -50,5 +48,13 @@ class DetailViewController: UIViewController {
             }
         }
         imageFetch.resume()
+    }
+    
+    
+    //Send movie data to the detailView
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        let destinationVC = segue.destination as? InventoryViewController
+        
+        destinationVC?.products.append(product)
     }
 }

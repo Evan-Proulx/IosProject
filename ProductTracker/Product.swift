@@ -11,7 +11,7 @@ enum Section{
     case main
 }
 
-struct Product {
+struct Product: Codable, Hashable{
     let title: String
     let description: String
     let brand: String
