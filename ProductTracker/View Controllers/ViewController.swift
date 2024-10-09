@@ -11,6 +11,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     
     var product: Product?
+    
+    var productStore: ProductStore!
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +86,8 @@ class ViewController: UIViewController {
         if let destinationVC = storyboard?.instantiateViewController(withIdentifier: "Details") as? DetailViewController {
             
             destinationVC.product = product
+            destinationVC.productStore = productStore
+            destinationVC.navFromSearch = true
             self.navigationController?.pushViewController(destinationVC, animated: true)
         }
     }

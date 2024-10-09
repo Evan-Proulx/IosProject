@@ -16,6 +16,9 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     
     var product: Product!
+    var productStore: ProductStore!
+    var navFromSearch = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,11 +29,13 @@ class DetailViewController: UIViewController {
         price.text = String("$\(product.price)")
         
         fetchImage(forPath: product.image)
+        
+        
     }
 
     func fetchImage(forPath path:String){
         //fixes url (http is not secure)
-        let securePath = path.replacingOccurrences(of: "http", with: "https")
+        let securePath = path.replacingOccurrences(of: "http:", with: "https:")
 
         guard let imageURL = URL(string: securePath) else {
             print("Can't make this url: \(securePath)")
@@ -51,10 +56,11 @@ class DetailViewController: UIViewController {
     }
     
     
-    //Send movie data to the detailView
+    //Navigate to inventory when product is added
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         let destinationVC = segue.destination as? InventoryViewController
         
-        destinationVC?.products.append(product)
+        //Add product to store
+        productStore.addNewProduct(product: product)
     }
 }

@@ -15,6 +15,7 @@
 		208497A62CA48EF9000A42DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 208497A52CA48EF9000A42DF /* Assets.xcassets */; };
 		208497A92CA48EF9000A42DF /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 208497A82CA48EF9000A42DF /* Base */; };
 		208D7F6A2CAF4CFB00ED6CD2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208D7F692CAF4CFB00ED6CD2 /* DetailViewController.swift */; };
+		20BD3EAC2CB61D9D00E37218 /* ProductStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BD3EAB2CB61D9D00E37218 /* ProductStore.swift */; };
 		20CDE7D72CB490B900C85664 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDE7D62CB490B900C85664 /* InventoryViewController.swift */; };
 		20CDE7D92CB4917800C85664 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDE7D82CB4917800C85664 /* Inventory.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		208497A82CA48EF9000A42DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		208497AA2CA48EF9000A42DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		208D7F692CAF4CFB00ED6CD2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		20BD3EAB2CB61D9D00E37218 /* ProductStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStore.swift; sourceTree = "<group>"; };
 		20CDE7D62CB490B900C85664 /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		20CDE7D82CB4917800C85664 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +66,7 @@
 		2084979B2CA48EF1000A42DF /* ProductTracker */ = {
 			isa = PBXGroup;
 			children = (
+				20BD3EAA2CB61D7C00E37218 /* Models */,
 				208D7F682CAF4CD500ED6CD2 /* View Controllers */,
 				2084979C2CA48EF1000A42DF /* AppDelegate.swift */,
 				2084979E2CA48EF1000A42DF /* SceneDelegate.swift */,
@@ -71,8 +74,6 @@
 				208497A52CA48EF9000A42DF /* Assets.xcassets */,
 				208497A72CA48EF9000A42DF /* LaunchScreen.storyboard */,
 				208497AA2CA48EF9000A42DF /* Info.plist */,
-				200151622CA5D2F300F62E72 /* Product.swift */,
-				20CDE7D82CB4917800C85664 /* Inventory.swift */,
 			);
 			path = ProductTracker;
 			sourceTree = "<group>";
@@ -85,6 +86,16 @@
 				20CDE7D62CB490B900C85664 /* InventoryViewController.swift */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		20BD3EAA2CB61D7C00E37218 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				200151622CA5D2F300F62E72 /* Product.swift */,
+				20CDE7D82CB4917800C85664 /* Inventory.swift */,
+				20BD3EAB2CB61D9D00E37218 /* ProductStore.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +172,7 @@
 				208497A12CA48EF1000A42DF /* ViewController.swift in Sources */,
 				20CDE7D72CB490B900C85664 /* InventoryViewController.swift in Sources */,
 				20CDE7D92CB4917800C85664 /* Inventory.swift in Sources */,
+				20BD3EAC2CB61D9D00E37218 /* ProductStore.swift in Sources */,
 				200151632CA5D2F300F62E72 /* Product.swift in Sources */,
 				208D7F6A2CAF4CFB00ED6CD2 /* DetailViewController.swift in Sources */,
 				2084979D2CA48EF1000A42DF /* AppDelegate.swift in Sources */,

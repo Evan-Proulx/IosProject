@@ -9,16 +9,20 @@ import UIKit
 
 class InventoryViewController: UIViewController {
     var products = [Product]()
+    
+    var productStore = ProductStore()
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
         print("PRODUCTS \(products)")
-        // Do any additional setup after loading the view.
-        
+        //retrieve data from file
+        productStore.getProducts()
+        //set to product store
         createSnapshot()
     }
+    
+    
     
     //MARK: Table
     lazy var datasource = UITableViewDiffableDataSource<Section, Product>(tableView: tableView){
@@ -36,13 +40,13 @@ class InventoryViewController: UIViewController {
     func createSnapshot(){
         var snapshot = NSDiffableDataSourceSnapshot<Section, Product>()
         snapshot.appendSections([.main])
-        snapshot.appendItems(products)
+        snapshot.appendItems(productStore.getAllProducts)
         datasource.apply(snapshot,animatingDifferences: true)
     }
     
     func fetchImage(forPath path:String,inCell cell: InventoryTableViewCell){
         //fixes url (http is not secure)
-        let securePath = path.replacingOccurrences(of: "http", with: "https")
+        let securePath = path.replacingOccurrences(of: "http:", with: "https")
 
         guard let imageURL = URL(string: securePath) else {
             print("Can't make this url: \(securePath)")
@@ -62,4 +66,20 @@ class InventoryViewController: UIViewController {
         imageFetch.resume()
     }
 
+    
+    //Send movie data to the detailView
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "toDetails"{
+            guard let index = tableView.indexPathForSelectedRow else {return}
+            let destinationVC = segue.destination as? DetailViewController
+            let productToPass = datasource.itemIdentifier(for: index)
+            
+            destinationVC?.product = productToPass
+            destinationVC?.productStore = productStore
+            destinationVC?.navFromSearch = false
+        }else if segue.identifier == "toSearch"{
+            let destinationVC = segue.destination as? ViewController
+            destinationVC?.productStore = productStore
+        }
+    }
 }
