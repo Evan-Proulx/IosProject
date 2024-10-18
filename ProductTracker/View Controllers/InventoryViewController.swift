@@ -20,6 +20,8 @@ class InventoryViewController: UIViewController {
         productStore.getProducts()
         //set to product store
         createSnapshot()
+        
+        tableView.delegate = self
     }
     
     
@@ -46,7 +48,7 @@ class InventoryViewController: UIViewController {
     
     func fetchImage(forPath path:String,inCell cell: InventoryTableViewCell){
         //fixes url (http is not secure)
-        let securePath = path.replacingOccurrences(of: "http:", with: "https")
+        let securePath = path.replacingOccurrences(of: "http:", with: "https:")
 
         guard let imageURL = URL(string: securePath) else {
             print("Can't make this url: \(securePath)")
@@ -81,5 +83,40 @@ class InventoryViewController: UIViewController {
             let destinationVC = segue.destination as? ViewController
             destinationVC?.productStore = productStore
         }
+    }
+}
+
+//allow for swiping on row to delete record
+extension InventoryViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Remove"){
+            _, _, completionHandler in
+            guard let productToRemove = self.datasource.itemIdentifier(for: indexPath) else{return}
+            
+            //alert before deleting
+            let alert = UIAlertController(title: "DELETE", message: "Are you sure you want to remove this product?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Delete", style: .destructive){
+                _ in
+                //delete product
+                self.productStore.removeProduct(product: productToRemove)
+                self.createSnapshot()
+                
+                completionHandler(true)
+            })
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel){
+                _ in
+            })
+            //show alert
+            self.present(alert, animated: true)
+        }
+        
+        deleteAction.image = UIImage(systemName: "trash")
+        deleteAction.backgroundColor = UIColor.red
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
