@@ -29,10 +29,35 @@ class DetailViewController: UIViewController {
         price.text = String("$\(product.price)")
         
         fetchImage(forPath: product.image)
-        
-        
     }
 
+    @IBAction func editPrice(_ sender: Any) {
+        let ac = UIAlertController(title: "Edit Price", message: nil, preferredStyle: .alert)
+        ac.addTextField { textField in
+            //set to decimal keyboard
+            textField.keyboardType = .decimalPad
+        }
+        
+        ac.addAction(UIAlertAction(title: "Edit", style: .default) { [unowned self] _ in
+            let userInput = ac.textFields?[0].text ?? "0"
+            let numInput = Double(userInput)
+            if let numInput = numInput{
+                self.product.price = numInput
+                //update label
+                self.price.text = String(format: "$%.2f", numInput)
+                //update the product in the store
+                productStore.updateProduct(withId: product.id, updatedProduct: product)
+                print(product.price)
+                //update the page
+                viewDidLoad()
+            }
+        })
+
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+
+        present(ac, animated: true)
+
+    }
     func fetchImage(forPath path:String){
         //fixes url (http is not secure)
         let securePath = path.replacingOccurrences(of: "http:", with: "https:")

@@ -47,6 +47,14 @@ class ProductStore{
         saveProducts()
     }
     
+    func updateProduct(withId id: Int, updatedProduct: Product) {
+        if let existingProduct = products.first(where: { $0.id == id }) {
+            products.remove(existingProduct)
+            products.insert(updatedProduct)
+            saveProducts()
+        }
+    }
+    
 
     //Takes json url and updates it with the product data
     func save(to url: URL){

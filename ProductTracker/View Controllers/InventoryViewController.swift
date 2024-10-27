@@ -120,3 +120,4 @@ extension InventoryViewController: UITableViewDelegate{
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
+

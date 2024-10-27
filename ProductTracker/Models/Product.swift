@@ -12,9 +12,22 @@ enum Section{
 }
 
 struct Product: Codable, Hashable{
-    let title: String
-    let description: String
-    let brand: String
-    let price: Double
-    let image: String
+    static var lastId: Int = 0
+        
+    var id: Int
+    var title: String
+    var description: String
+    var brand: String
+    var price: Double
+    var image: String
+    
+    init(title: String, description: String, brand: String, price: Double, image: String) {
+        self.id = Product.lastId
+        Product.lastId += 1
+        self.title = title
+        self.description = description
+        self.brand = brand
+        self.price = price
+        self.image = image
+    }
 }
