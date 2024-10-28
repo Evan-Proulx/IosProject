@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var details: UILabel!
     @IBOutlet weak var productTitle: UILabel!
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var addButton: UIBarButtonItem!
     
     var product: Product!
     var productStore: ProductStore!
@@ -21,7 +22,12 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //hide addButton if it's already in the inventory
+        if !navFromSearch{
+            addButton.isHidden = true
+        }else{addButton.isHidden = false}
+        
         //Product details
         productTitle.text = product.title
         brand.text = product.brand
@@ -29,9 +35,25 @@ class DetailViewController: UIViewController {
         price.text = String("$\(product.price)")
         
         fetchImage(forPath: product.image)
+        
+        price.isUserInteractionEnabled = true
+        let holdGesture = UILongPressGestureRecognizer(target: self, action: #selector(priceLongPressed))
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: <#T##Selector?#>)
+        
+        price.addGestureRecognizer(holdGesture)
     }
 
     @IBAction func editPrice(_ sender: Any) {
+        updatePrice()
+    }
+    
+    //update price when price text is long held
+    @objc func priceLongPressed(_ sender: UILongPressGestureRecognizer){
+        updatePrice()
+    }
+    
+    //display alert to update price
+    func updatePrice(){
         let ac = UIAlertController(title: "Edit Price", message: nil, preferredStyle: .alert)
         ac.addTextField { textField in
             //set to decimal keyboard
@@ -56,8 +78,8 @@ class DetailViewController: UIViewController {
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 
         present(ac, animated: true)
-
     }
+    
     func fetchImage(forPath path:String){
         //fixes url (http is not secure)
         let securePath = path.replacingOccurrences(of: "http:", with: "https:")

@@ -135,6 +135,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addButton" destination="I4Q-kD-A7k" id="MQv-ch-ZAh"/>
                         <outlet property="brand" destination="FYL-tF-iYW" id="NZ0-TI-kgS"/>
                         <outlet property="details" destination="mA9-NR-BNe" id="WK8-8w-n2f"/>
                         <outlet property="image" destination="OpB-31-1xf" id="SWF-vg-igD"/>

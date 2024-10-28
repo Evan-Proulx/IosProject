@@ -85,6 +85,7 @@ class ViewController: UIViewController {
     func navigateToDetails(){
         if let destinationVC = storyboard?.instantiateViewController(withIdentifier: "Details") as? DetailViewController {
             
+            destinationVC.navFromSearch = true
             destinationVC.product = product
             destinationVC.productStore = productStore
             destinationVC.navFromSearch = true
