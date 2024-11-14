@@ -11,17 +11,17 @@
         <!--Product Search-->
         <scene sceneID="dlD-GN-Vyp">
             <objects>
-                <viewController title="Product Search" id="T9h-8X-LsB" customClass="ViewController" customModule="ProductTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="search" title="Product Search" id="T9h-8X-LsB" customClass="ViewController" customModule="ProductTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bKM-gJ-BQo">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nlm-lq-sMe">
-                                <rect key="frame" x="86.666666666666686" y="371.33333333333331" width="220" height="99.666666666666686"/>
+                                <rect key="frame" x="86.666666666666686" y="376.33333333333331" width="220" height="99.666666666666686"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter UPC Code Here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tRt-RY-ckM">
                                         <rect key="frame" x="0.0" y="0.0" width="220" height="26.333333333333332"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -68,52 +68,52 @@
             <objects>
                 <viewController storyboardIdentifier="Details" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Ns2-U1-fTP" customClass="DetailViewController" customModule="ProductTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lEE-I6-y1L">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMH-iT-phP">
+                                <rect key="frame" x="267" y="734.66666666666663" width="75.333333333333314" height="34.333333333333371"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="pencil" catalog="system" title="Edit"/>
+                                <connections>
+                                    <action selector="editPrice:" destination="Ns2-U1-fTP" eventType="touchUpInside" id="ohd-wd-1cB"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Zan-be-byi">
-                                <rect key="frame" x="40" y="0.0" width="313" height="421.33333333333331"/>
+                                <rect key="frame" x="40" y="68.999999999999972" width="313" height="430.33333333333326"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="title" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eU-6M-6Nb">
-                                        <rect key="frame" x="0.0" y="0.0" width="313" height="30.333333333333332"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="313" height="31"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="brand" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYL-tF-iYW">
-                                        <rect key="frame" x="0.0" y="60.333333333333336" width="313" height="20.333333333333336"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="61.000000000000007" width="313" height="20.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OpB-31-1xf">
-                                        <rect key="frame" x="0.0" y="110.66666666666669" width="313" height="210"/>
+                                        <rect key="frame" x="0.0" y="111.33333333333334" width="313" height="210.00000000000003"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="210" id="n0k-uG-XuY"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="details" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mA9-NR-BNe">
-                                        <rect key="frame" x="0.0" y="350.66666666666669" width="313" height="20.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="351.33333333333331" width="313" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHA-8N-vOj">
-                                        <rect key="frame" x="0.0" y="401" width="313" height="20.333333333333314"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="401.66666666666669" width="313" height="28.666666666666686"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dMH-iT-phP">
-                                <rect key="frame" x="289" y="758.66666666666663" width="53.333333333333314" height="34.333333333333371"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Edit"/>
-                                <connections>
-                                    <action selector="editPrice:" destination="Ns2-U1-fTP" eventType="touchUpInside" id="ohd-wd-1cB"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="C8n-FM-ZFo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -124,7 +124,7 @@
                             <constraint firstItem="C8n-FM-ZFo" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Zan-be-byi" secondAttribute="bottom" id="L8W-YN-F97"/>
                             <constraint firstItem="C8n-FM-ZFo" firstAttribute="trailing" secondItem="dMH-iT-phP" secondAttribute="trailing" constant="50.666666666666686" id="LD6-nX-Yui"/>
                             <constraint firstItem="Zan-be-byi" firstAttribute="centerX" secondItem="lEE-I6-y1L" secondAttribute="centerX" id="cz7-PJ-tbw"/>
-                            <constraint firstItem="Zan-be-byi" firstAttribute="top" secondItem="C8n-FM-ZFo" secondAttribute="top" id="kf6-RN-VaU"/>
+                            <constraint firstItem="Zan-be-byi" firstAttribute="top" secondItem="C8n-FM-ZFo" secondAttribute="top" constant="10" id="kf6-RN-VaU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="O9O-oi-s2y">
@@ -152,11 +152,11 @@
             <objects>
                 <viewController title="Inventory" id="RUu-R0-F6i" customClass="InventoryViewController" customModule="ProductTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EfJ-Zn-lpa">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="NeH-nf-Clw">
-                                <rect key="frame" x="0.0" y="40" width="393" height="762"/>
+                                <rect key="frame" x="0.0" y="99" width="393" height="654"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productCell" rowHeight="180" id="FrZ-ip-nOp" customClass="InventoryTableViewCell" customModule="ProductTracker" customModuleProvider="target">
@@ -250,10 +250,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="0Fn-FR-rGy"/>
         <segue reference="DgF-yK-v9M"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="barcode" catalog="system" width="128" height="94"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="plus.square.on.square" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

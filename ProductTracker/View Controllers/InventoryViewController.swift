@@ -21,10 +21,18 @@ class InventoryViewController: UIViewController {
         //set to product store
         createSnapshot()
         
+        //Add swipe gesture to the view
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(screenSwiped))
+            swipeGesture.direction = .up
+            view.addGestureRecognizer(swipeGesture)
+        
         tableView.delegate = self
     }
     
-    
+    //navigate back to inventory when screen is swiped
+    @objc func screenSwiped(_ sender: UISwipeGestureRecognizer){
+        self.navigateToDetails()
+    }
     
     //MARK: Table
     lazy var datasource = UITableViewDiffableDataSource<Section, Product>(tableView: tableView){
@@ -67,6 +75,8 @@ class InventoryViewController: UIViewController {
         }
         imageFetch.resume()
     }
+    
+    
 
     
     //Send movie data to the detailView
@@ -82,6 +92,12 @@ class InventoryViewController: UIViewController {
         }else if segue.identifier == "toSearch"{
             let destinationVC = segue.destination as? ViewController
             destinationVC?.productStore = productStore
+        }
+    }
+    
+    func navigateToDetails(){
+        if let destinationVC = storyboard?.instantiateViewController(withIdentifier: "search") as? ViewController {
+            self.navigationController?.pushViewController(destinationVC, animated: true)
         }
     }
 }

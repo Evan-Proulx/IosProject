@@ -36,11 +36,17 @@ class DetailViewController: UIViewController {
         
         fetchImage(forPath: product.image)
         
+        //add hold gesture to the priceLabel
         price.isUserInteractionEnabled = true
         let holdGesture = UILongPressGestureRecognizer(target: self, action: #selector(priceLongPressed))
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: <#T##Selector?#>)
         
         price.addGestureRecognizer(holdGesture)
+        
+        
+        //Add swipe gesture to the view
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(screenSwiped))
+            swipeGesture.direction = .right
+            view.addGestureRecognizer(swipeGesture)
     }
 
     @IBAction func editPrice(_ sender: Any) {
@@ -52,6 +58,10 @@ class DetailViewController: UIViewController {
         updatePrice()
     }
     
+    //navigate back to inventory when screen is swiped
+    @objc func screenSwiped(_ sender: UISwipeGestureRecognizer){
+        navigationController?.popViewController(animated: true)
+    }
     //display alert to update price
     func updatePrice(){
         let ac = UIAlertController(title: "Edit Price", message: nil, preferredStyle: .alert)
