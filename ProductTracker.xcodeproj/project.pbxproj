@@ -18,6 +18,7 @@
 		20BD3EAC2CB61D9D00E37218 /* ProductStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20BD3EAB2CB61D9D00E37218 /* ProductStore.swift */; };
 		20CDE7D72CB490B900C85664 /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDE7D62CB490B900C85664 /* InventoryViewController.swift */; };
 		20CDE7D92CB4917800C85664 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20CDE7D82CB4917800C85664 /* Inventory.swift */; };
+		20FCEBC52CE681FB00B68C18 /* WarningDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FCEBC42CE681FB00B68C18 /* WarningDialog.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		20BD3EAB2CB61D9D00E37218 /* ProductStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductStore.swift; sourceTree = "<group>"; };
 		20CDE7D62CB490B900C85664 /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryViewController.swift; sourceTree = "<group>"; };
 		20CDE7D82CB4917800C85664 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
+		20FCEBC42CE681FB00B68C18 /* WarningDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningDialog.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 				200151622CA5D2F300F62E72 /* Product.swift */,
 				20CDE7D82CB4917800C85664 /* Inventory.swift */,
 				20BD3EAB2CB61D9D00E37218 /* ProductStore.swift */,
+				20FCEBC42CE681FB00B68C18 /* WarningDialog.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				208497A12CA48EF1000A42DF /* ViewController.swift in Sources */,
+				20FCEBC52CE681FB00B68C18 /* WarningDialog.swift in Sources */,
 				20CDE7D72CB490B900C85664 /* InventoryViewController.swift in Sources */,
 				20CDE7D92CB4917800C85664 /* Inventory.swift in Sources */,
 				20BD3EAC2CB61D9D00E37218 /* ProductStore.swift in Sources */,

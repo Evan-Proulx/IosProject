@@ -22,7 +22,19 @@ class ViewController: UIViewController {
     
     //search for product with input given
     @IBAction func search(_ sender: Any) {
-        guard let code = textField.text, !code.isEmpty else { return }
+        guard let code = textField.text, !code.isEmpty, code.count>12 else {
+            print("TEst")
+            //Show custom alert when code is invalid
+            let warningDialog = WarningDialog()
+            warningDialog.frame = view.bounds
+            warningDialog.isOpaque = false
+            
+            view.addSubview(warningDialog)
+            view.isUserInteractionEnabled = false
+
+            warningDialog.showDialog()
+            return
+        }
         
         let url = createUrl(code: code)!
         searchItem(url: url)
@@ -46,7 +58,7 @@ class ViewController: UIViewController {
             if let dataError = error {
                 print("Error fetching results: \(dataError.localizedDescription)")
             } else {
-                guard let fetchedData = data else { return }
+                guard let fetchedData = data else {return}
                 do {
                     if let json = try JSONSerialization.jsonObject(with: fetchedData, options: []) as? [String: Any] {
                         if let items = json["items"] as? [[String: Any]], let firstItem = items.first {

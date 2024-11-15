@@ -20,13 +20,19 @@ class DetailViewController: UIViewController {
     var productStore: ProductStore!
     var navFromSearch = false
     
+    @IBOutlet weak var editBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //hide addButton if it's already in the inventory
+        //dont allow editing when navigating from search
         if !navFromSearch{
             addButton.isHidden = true
-        }else{addButton.isHidden = false}
+            price.isUserInteractionEnabled = true
+        }else{
+            addButton.isHidden = false
+            editBtn.isHidden = true
+        }
         
         //Product details
         productTitle.text = product.title
@@ -37,7 +43,6 @@ class DetailViewController: UIViewController {
         fetchImage(forPath: product.image)
         
         //add hold gesture to the priceLabel
-        price.isUserInteractionEnabled = true
         let holdGesture = UILongPressGestureRecognizer(target: self, action: #selector(priceLongPressed))
         
         price.addGestureRecognizer(holdGesture)
