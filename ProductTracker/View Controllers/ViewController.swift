@@ -8,12 +8,13 @@
 import UIKit
 
 class ViewController: UIViewController {
+    //MARK: Properties
     @IBOutlet weak var textField: UITextField!
-    
     var product: Product?
-    
     var productStore: ProductStore!
         
+    
+    //MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -22,22 +23,27 @@ class ViewController: UIViewController {
     
     //search for product with input given
     @IBAction func search(_ sender: Any) {
-        guard let code = textField.text, !code.isEmpty, code.count>12 else {
-            print("TEst")
+        guard let code = textField.text, !code.isEmpty, code.count == 12 else {
             //Show custom alert when code is invalid
-            let warningDialog = WarningDialog()
-            warningDialog.frame = view.bounds
-            warningDialog.isOpaque = false
+            displayDialog()
             
-            view.addSubview(warningDialog)
-            view.isUserInteractionEnabled = false
-
-            warningDialog.showDialog()
             return
         }
         
         let url = createUrl(code: code)!
         searchItem(url: url)
+    }
+    
+    func displayDialog(){
+        let warningDialog = WarningDialog()
+        warningDialog.frame = view.bounds
+        warningDialog.isOpaque = false
+        
+        view.addSubview(warningDialog)
+        view.isUserInteractionEnabled = true
+
+        warningDialog.showDialog()
+        return
     }
     
     //creates url with search and api key
@@ -58,7 +64,10 @@ class ViewController: UIViewController {
             if let dataError = error {
                 print("Error fetching results: \(dataError.localizedDescription)")
             } else {
-                guard let fetchedData = data else {return}
+                guard let fetchedData = data else {
+                    self.displayDialog()
+                    return
+                }
                 do {
                     if let json = try JSONSerialization.jsonObject(with: fetchedData, options: []) as? [String: Any] {
                         if let items = json["items"] as? [[String: Any]], let firstItem = items.first {
@@ -84,7 +93,7 @@ class ViewController: UIViewController {
                                 self.navigateToDetails()
                             }
                         }
-                    }
+                    }else{self.displayDialog()}
                 } catch {
                     print("Error parsing JSON: \(error.localizedDescription)")
                 }

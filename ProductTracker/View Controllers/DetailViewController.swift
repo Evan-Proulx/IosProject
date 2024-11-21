@@ -8,7 +8,7 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    //MARK: Properties
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var brand: UILabel!
     @IBOutlet weak var details: UILabel!
@@ -21,6 +21,8 @@ class DetailViewController: UIViewController {
     var navFromSearch = false
     
     @IBOutlet weak var editBtn: UIButton!
+    
+    //MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,17 +59,17 @@ class DetailViewController: UIViewController {
     @IBAction func editPrice(_ sender: Any) {
         updatePrice()
     }
-    
     //update price when price text is long held
     @objc func priceLongPressed(_ sender: UILongPressGestureRecognizer){
         updatePrice()
     }
-    
     //navigate back to inventory when screen is swiped
     @objc func screenSwiped(_ sender: UISwipeGestureRecognizer){
         navigationController?.popViewController(animated: true)
     }
-    //display alert to update price
+    
+    
+    //Display alert to update price
     func updatePrice(){
         let ac = UIAlertController(title: "Edit Price", message: nil, preferredStyle: .alert)
         ac.addTextField { textField in
@@ -120,7 +122,7 @@ class DetailViewController: UIViewController {
     
     //Navigate to inventory when product is added
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        let destinationVC = segue.destination as? InventoryViewController
+        _ = segue.destination as? InventoryViewController
         
         //Add product to store
         productStore.addNewProduct(product: product)

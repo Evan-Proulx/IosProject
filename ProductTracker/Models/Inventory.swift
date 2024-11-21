@@ -10,6 +10,7 @@ import UIKit
 class InventoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var productName: UILabel!
+    @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productImage: UIImageView!
     
     override func awakeFromNib() {

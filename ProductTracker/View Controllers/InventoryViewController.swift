@@ -8,14 +8,15 @@
 import UIKit
 
 class InventoryViewController: UIViewController {
-    var products = [Product]()
     
+    //MARK: Properties
+    var products = [Product]()
     var productStore = ProductStore()
-
     @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("PRODUCTS \(products)")
+        
         //retrieve data from file
         productStore.getProducts()
         //set to product store
@@ -29,17 +30,16 @@ class InventoryViewController: UIViewController {
         tableView.delegate = self
     }
     
-    //navigate back to inventory when screen is swiped
-    @objc func screenSwiped(_ sender: UISwipeGestureRecognizer){
-        self.navigateToDetails()
-    }
-    
     //MARK: Table
     lazy var datasource = UITableViewDiffableDataSource<Section, Product>(tableView: tableView){
         tableview, indexpath, product in
         let cell = tableview.dequeueReusableCell(withIdentifier: "productCell", for: indexpath) as? InventoryTableViewCell
+        
+        //Convert double to string
+        let priceString = "$\(product.price)"
 
         cell?.productName.text = product.title
+        cell?.productPrice.text = priceString
         //get poster
         self.fetchImage(forPath: product.image, inCell: cell!)
     
@@ -52,6 +52,11 @@ class InventoryViewController: UIViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(productStore.getAllProducts)
         datasource.apply(snapshot,animatingDifferences: true)
+    }
+    
+    //navigate back to inventory when screen is swiped
+    @objc func screenSwiped(_ sender: UISwipeGestureRecognizer){
+        self.navigateToDetails()
     }
     
     func fetchImage(forPath path:String,inCell cell: InventoryTableViewCell){
@@ -77,10 +82,9 @@ class InventoryViewController: UIViewController {
     }
     
     
-
-    
-    //Send movie data to the detailView
+    //Send movie data to the detailView or search screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        //Nav to details
         if segue.identifier == "toDetails"{
             guard let index = tableView.indexPathForSelectedRow else {return}
             let destinationVC = segue.destination as? DetailViewController
@@ -89,6 +93,8 @@ class InventoryViewController: UIViewController {
             destinationVC?.product = productToPass
             destinationVC?.productStore = productStore
             destinationVC?.navFromSearch = false
+            
+        //Nav to search
         }else if segue.identifier == "toSearch"{
             let destinationVC = segue.destination as? ViewController
             destinationVC?.productStore = productStore

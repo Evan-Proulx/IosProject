@@ -13,6 +13,7 @@ class WarningDialog: UIView {
         var dialogTitle: NSString = "Invalid Code"
         var dialogFillColour = UIColor.red
         
+        //Dialog styles
         override func draw(_ rect: CGRect) {
             let width: CGFloat = 200
             let height: CGFloat = 80
@@ -36,6 +37,7 @@ class WarningDialog: UIView {
             dialogTitle.draw(at: textPoint, withAttributes: attributes)
         }
         
+        //Dialog animation
         func showDialog(){
             alpha = 0
             UIView.animate(withDuration: 0.5, delay: 0,usingSpringWithDamping: 0.5,initialSpringVelocity: 0.8,
